@@ -4,7 +4,7 @@
 #' the Macrobond. If time series have different frequency they are converted
 #' to same frequency. Other conversions in macrobond are also available.
 #'
-#' For time series of same frequnecy the \code{\link{read_mb}} is faster.
+#' For time series of same frequnecy the \code{\link{get_mb}} is faster.
 #'
 #' @param series A vector of Macrobond serie codes.
 #' @param frequency An option for frequncy conversion. Default is \code{Highest},
@@ -21,19 +21,15 @@
 #' Time series are on other columns.
 #'
 #' @examples
-#'   xx <- read_mb(series = c("usgdp", "uscpi"))
-#'   yy <- read_mb(series = c("usgdp", "uscpi"), frequency = "Annual")
-  zz <- read_mb(series = c("usnaac0057", "eunaac0019"),
-                frequency = "Annual", currency = "USD",
-                start_date = "", end_date = ""))
-  library(jtools)
-zz %>%
-  gather(vars, values, -time) %>%
-  ggplot(aes(time, values, colour = vars)) +
-  geom_line()
+#'   xx <- get_convert_mb(series = c("usgdp", "uscpi"))
+#'   yy <- get_convert_mb(series = c("usgdp", "uscpi"), frequency = "Annual")
+#'  zz <- get_convert_mb(series = c("usnaac0057", "eunaac0019"),
+#'                frequency = "Annual", currency = "USD",
+#'                start_date = "", end_date = ""))
 
 
-read_mb <- function(series, frequency = "Highest", currency = "",
+
+get_convert_mb <- function(series, frequency = "Highest", currency = "",
                     dates ){
 
   seriesRequest <- CreateUnifiedTimeSeriesRequest()

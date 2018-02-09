@@ -3,7 +3,7 @@
 #' The function is used to get one or several time series of same frequency from
 #' the Macrobond.
 #'
-#' For time series of different frequnecies use \code{\link{read_mb}}.
+#' For time series of different frequnecies use \code{\link{get_convert_mb}}.
 #'
 #' @param series a vector of Macrobond serie codes.
 #'
