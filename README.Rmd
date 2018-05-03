@@ -1,0 +1,50 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# macrobonder
+
+The goal of macrobonder is to provide simple funtions to read data from
+the Macrobond.
+
+The macrobonder depends on the MacrobondAPI. To install the MacrobondAPI
+
+
+## Get data from macrobond
+
+There are two functions to get data from the Macrobond:
+
+* `get_md()`, simpler and faster method to get whole series with same frequency.
+* `get_convert_mb()`, a method with more options to get also series with
+   different frequency. Series are converted to same frequancy.
+   
+Series are returned as a data.frame.
+
+```{r example_get}
+library(macrobonder)
+
+x <- get_mb(series = c("usgdp", "figdp"))
+
+str(x)
+
+```
+
+```{r example_get_convert}
+
+y <- get_convert_mb(series = c("usgdp", "uscpi"), frequency = "Annual")
+
+str(y)
+
+```
