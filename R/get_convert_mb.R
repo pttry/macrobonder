@@ -30,7 +30,7 @@
 
 
 get_convert_mb <- function(series, frequency = "Highest", currency = "",
-                    dates ){
+                           start_date = "", end_date = ""){
 
   seriesRequest <- CreateUnifiedTimeSeriesRequest()
   setFrequency(seriesRequest, TimeSeriesFrequency[[frequency]])

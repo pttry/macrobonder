@@ -10,12 +10,14 @@
 #' @return A data.frame with dates in \code{time} column.
 #' Time series are on other columns.
 #'
+#' @import MacrobondAPI
+#'
 #' @examples
 #'   x <- get_mb(series = c("usgdp", "figdp"))
 
 
 get_mb <- function(series){
-  ser_lst <- FetchTimeSeries(series)
+  ser_lst <- MacrobondAPI::FetchTimeSeries(series)
   freqs <- unlist(lapply(ser_lst, getFrequency))
   if (!(all(freqs == mean(freqs)))) stop(
     "Series have different frequencies.\n",
