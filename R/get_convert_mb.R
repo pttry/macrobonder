@@ -6,7 +6,7 @@
 #'
 #' For time series of same frequnecy the \code{\link{get_mb}} is faster.
 #'
-#' @param series A vector of Macrobond serie codes.
+#' @param series A (named) vector of  Macrobond serie codes.
 #' @param frequency An option for frequncy conversion. Default is \code{Highest},
 #'   for others see \code{\link[MacrobondAPI]{TimeSeriesFrequency}}.
 #' @param currency An option for currency conversion. Default is \code{""}
@@ -20,11 +20,12 @@
 #' @import MacrobondAPI
 #' @export
 #'
-#' @return A data.frame with dates in \code{time} column.
-#' Time series are on other columns.
+#' @return A data.frame with dates in \code{time} column and
+#'   time series on other (named) columns.
 #'
 #' @examples
 #'   xx <- get_convert_mb(series = c("usgdp", "uscpi"))
+#'   xx <- get_convert_mb(series = c(gdp = "usgdp", cpi = "uscpi"))
 #'   yy <- get_convert_mb(series = c("usgdp", "uscpi"), frequency = "Annual")
 #'  zz <- get_convert_mb(series = c("usnaac0057", "eunaac0019"),
 #'                frequency = "Annual", currency = "USD",
@@ -47,6 +48,7 @@ get_convert_mb <- function(series, frequency = "Highest", currency = "",
 
   res <- as.data.frame(do.call("merge", xts_lst))
   res <- data.frame(time = as.Date(rownames(res)), res)
+  if (!is.null(names(series))) names(res) <- names(series)
   row.names(res) <- NULL
   res
 }
