@@ -17,6 +17,9 @@
 #' @param end_date, A ending date. A format of available absolute and
 #'   relative date formulations see \code{\link[MacrobondAPI]{SeriesRequest-class}}
 #'
+#' @import MacrobondAPI
+#' @export
+#'
 #' @return A data.frame with dates in \code{time} column.
 #' Time series are on other columns.
 #'
@@ -25,7 +28,7 @@
 #'   yy <- get_convert_mb(series = c("usgdp", "uscpi"), frequency = "Annual")
 #'  zz <- get_convert_mb(series = c("usnaac0057", "eunaac0019"),
 #'                frequency = "Annual", currency = "USD",
-#'                start_date = "", end_date = ""))
+#'                start_date = "", end_date = "")
 
 
 
@@ -40,7 +43,7 @@ get_convert_mb <- function(series, frequency = "Highest", currency = "",
 
   ser_lst <- FetchTimeSeries(seriesRequest)
 
-  xts_lst <- lapply(ser_lst, as.xts)
+  xts_lst <- lapply(ser_lst, xts::as.xts)
 
   res <- as.data.frame(do.call("merge", xts_lst))
   res <- data.frame(time = as.Date(rownames(res)), res)

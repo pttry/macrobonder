@@ -11,20 +11,21 @@
 #' Time series are on other columns.
 #'
 #' @import MacrobondAPI
+#' @export
 #'
 #' @examples
 #'   x <- get_mb(series = c("usgdp", "figdp"))
 
 
 get_mb <- function(series){
-  ser_lst <- MacrobondAPI::FetchTimeSeries(series)
+  ser_lst <- FetchTimeSeries(series)
   freqs <- unlist(lapply(ser_lst, getFrequency))
   if (!(all(freqs == mean(freqs)))) stop(
     "Series have different frequencies.\n",
     names(freqs),
     "\nUse read_mb() instead")
 
-  xts_lst <- lapply(ser_lst, as.xts)
+  xts_lst <- lapply(ser_lst, xts::as.xts)
 
   res <- as.data.frame(do.call("merge", xts_lst))
   res <- data.frame(time = as.Date(rownames(res)), res)
