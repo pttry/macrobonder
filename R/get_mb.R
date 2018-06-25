@@ -30,7 +30,7 @@ get_mb <- function(series){
 
   res <- as.data.frame(do.call("merge", xts_lst))
   res <- data.frame(time = as.Date(rownames(res)), res)
-  if (!is.null(names(series))) names(res) <- names(series)
+  if (!is.null(names(series))) names(res) <- c("time", names(series))
   row.names(res) <- NULL
   res
 }
