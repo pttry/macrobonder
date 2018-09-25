@@ -1,7 +1,7 @@
 Package: macrobonder
 Type: Package
 Title: Easy connection to Macrobond
-Version: 0.1.0
+Version: 0.1.1
 Author: Janne Huovari
 Maintainer: Janne Huovari <janne.huovari@ptt.fi>
 Description: Read data from Macrobond thru Macrobond API. Inteded to be easier 

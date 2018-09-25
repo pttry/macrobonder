@@ -19,7 +19,21 @@ knitr::opts_chunk$set(
 The goal of macrobonder is to provide simple funtions to read data from
 the Macrobond.
 
-The macrobonder depends on the MacrobondAPI. To install the MacrobondAPI
+The macrobonder depends on the MacrobondAPI. 
+
+## Installation
+
+To install the MacrobondAPI see: https://help.macrobond.com/technical-information/the-macrobond-api-for-r/.
+
+To install the macrobonder:
+
+```{r install, eval=FALSE}
+
+# install.packages("devtools")
+devtools::install_github("pttry/macrobonder")
+
+```
+
 
 
 ## Get data from macrobond
@@ -32,14 +46,30 @@ There are two functions to get data from the Macrobond:
    
 Series are returned as a data.frame.
 
+### get_md()
+
 ```{r example_get}
-library(macrobonder)
+suppressPackageStartupMessages(library(macrobonder))
 
 x <- get_mb(series = c("usgdp", "figdp"))
 
 str(x)
 
 ```
+
+Series can be also named:
+
+```{r named_example}
+
+x <- get_mb(series = c(usa = "usgdp", finland = "figdp"))
+
+str(x)
+
+
+```
+
+
+### get_convert_md()
 
 ```{r example_get_convert}
 
