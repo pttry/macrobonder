@@ -7,11 +7,11 @@
 get_mb(series)
 }
 \arguments{
-\item{series}{a vector of Macrobond serie codes.}
+\item{series}{a (named) vector of Macrobond serie codes.}
 }
 \value{
-A data.frame with dates in \code{time} column.
-Time series are on other columns.
+A data.frame with dates in \code{time} column and
+  time series on other (named) columns.
 }
 \description{
 The function is used to get one or several time series of same frequency from
@@ -22,4 +22,5 @@ For time series of different frequnecies use \code{\link{get_convert_mb}}.
 }
 \examples{
   x <- get_mb(series = c("usgdp", "figdp"))
+  x <- get_mb(series = c(USA = "usgdp", Finland = "figdp"))
 }

@@ -8,7 +8,7 @@ get_convert_mb(series, frequency = "Highest", currency = "",
   start_date = "", end_date = "")
 }
 \arguments{
-\item{series}{A vector of Macrobond serie codes.}
+\item{series}{A (named) vector of  Macrobond serie codes.}
 
 \item{frequency}{An option for frequncy conversion. Default is \code{Highest},
 for others see \code{\link[MacrobondAPI]{TimeSeriesFrequency}}.}
@@ -24,8 +24,8 @@ relative date formulations see \code{\link[MacrobondAPI]{SeriesRequest-class}}}
 relative date formulations see \code{\link[MacrobondAPI]{SeriesRequest-class}}}
 }
 \value{
-A data.frame with dates in \code{time} column.
-Time series are on other columns.
+A data.frame with dates in \code{time} column and
+  time series on other (named) columns.
 }
 \description{
 The function is used to read one or several time series from
@@ -37,6 +37,7 @@ For time series of same frequnecy the \code{\link{get_mb}} is faster.
 }
 \examples{
   xx <- get_convert_mb(series = c("usgdp", "uscpi"))
+  xx <- get_convert_mb(series = c(gdp = "usgdp", cpi = "uscpi"))
   yy <- get_convert_mb(series = c("usgdp", "uscpi"), frequency = "Annual")
  zz <- get_convert_mb(series = c("usnaac0057", "eunaac0019"),
                frequency = "Annual", currency = "USD",
