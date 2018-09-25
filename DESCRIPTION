@@ -2,7 +2,7 @@ Package: macrobonder
 Type: Package
 Title: Easy connection to Macrobond
 Version: 0.1.1
-Author: Janne Huovari
+Authors@R: person("Janne", "Huovari", email = "janne.huovari@ptt.fi", role = c("aut", "cre"))
 Maintainer: Janne Huovari <janne.huovari@ptt.fi>
 Description: Read data from Macrobond thru Macrobond API. Inteded to be easier 
   than official MacrobondAPI package. Returns always data.frame. 
@@ -11,6 +11,8 @@ Depends:
     MacrobondAPI
 Imports:
     xts
+URL: https://github.com/pttry/macrobonder
+BugReports: https://github.com/pttry/macrobonder/issues
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
